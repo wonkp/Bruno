@@ -1,0 +1,10 @@
+name: 测试
+variables:
+  - name: teaching-url
+    value: https://test-api.mathplore.com/teaching-web
+  - name: sale-url
+    value: https://test-api.mathplore.com/sale-web
+  - name: system-url
+    value: https://test-api.mathplore.com/system-base
+  - name: token
+    value: ""

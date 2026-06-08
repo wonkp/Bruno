@@ -1,14 +1,11 @@
 info:
   name: 查询邀请人信息
   type: http
-  seq: 3
+  seq: 4
 
 http:
   method: GET
-  url: http://localhost:8084/sale-web/potentialCustomer/getInviteByAreaPhone?areaPhone=13000000000&courseCategory=1&transferStatus=1,2
-  headers:
-    - name: authorization
-      value: fUDWIKLv7lVVH4DAaynmhzGC0gFvDGwvOQZrQO7a
+  url: "{{sale-url}}/potentialCustomer/getInviteByAreaPhone?areaPhone=13000000000&courseCategory=1&transferStatus=1,2"
   params:
     - name: areaPhone
       value: "13000000000"

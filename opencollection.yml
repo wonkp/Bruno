@@ -2,6 +2,45 @@ opencollection: 1.0.0
 
 info:
   name: wonkp
+config:
+  proxy:
+    inherit: true
+    config:
+      protocol: http
+      hostname: ""
+      port: ""
+      auth:
+        username: ""
+        password: ""
+      bypassProxy: ""
+
+request:
+  auth:
+    type: apikey
+    key: authorization
+    value: "{{token}}"
+    placement: header
+  scripts:
+    - type: before-request
+      code: |-
+        const response = await bru.sendRequest({
+          method: 'POST',
+          url: 'https://test-api.mathplore.com/system-base/web/login',
+          data: {
+            "username": "gV7R6Gn3Inassp2+FX2HtaNLqIc+a/vfz76VhHQadj/fiIm4ZFXqmeBbzXgW+JLWsx7ONHpSeI51ZOEkAhGnvmnM/7pH1kqAc55ygofB08qyzx8dpw5j/tD44b3WLvPC/t4u8PTTAIMXfb52mxpf7JGGOqRfteOctHsDxJBcz+gpptPn6byI6h3nfFPLYLnQSqJgI9qSo9FXmj8/LNCvzqPV30pNHcX3PywMsKf0E+eTM1V/nufdxxQMIvyf9GGzx1eUjx5fWV5NllInQWF0Li0Fl1wxhAg2P0ju7FhuJJDLlSkBM4B8PIMYjpKTZX30JtIH1gl9z+//1TFtAicBWg==",
+            "password": "EJU6VR1lxVbXngWrt29Zs82MX6bBfw0cQ6RYWms9c+UXgILoOH5MByBI6riuqwabs9FVBjMdtg1QAHnIxwOzIotUgYQTY/5ztJ/jeQtLH0wQtQ+28I6JbbjikdZk/4pN4c4knhnvc4k2yQLFblF7ZSlhyZoP4XvaJXK28B6yc1p7nFW9A2p1YOoFN8XDhcs1+jc2Kvhc8FE+4WMh8OAKlEXDVyPhUpDPXdEGAim0TeOcfE9BzGmgc0khVdQkasc7SROMlp6VzQJ533DSr3EDaUoLoB588lPMfxi7jC/6GAthEeELb0qu7rTxC3uUMs5Qb4TnO6oLLaVwqZJfNrx5Vg==",
+            "platform": "WEB",
+            "type": 1,
+            "forcedLogin": false,
+            "deviceId": "5d35b1af-63de-48a1-bd94-ef4a74e77f8f"
+        }
+        }, function(err, res) {
+          if (err) {
+            console.error('Failed to get token:', err);
+            return;
+          }
+          bru.setVar('token', res.data.data.tokenValue);
+        });
 bundled: false
 extensions:
   bruno:

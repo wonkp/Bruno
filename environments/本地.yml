@@ -1,0 +1,10 @@
+name: 本地
+variables:
+  - name: teaching-url
+    value: http://localhost:8083/teaching-web
+  - name: sale-url
+    value: http://localhost:8084/sale-web
+  - name: system-url
+    value: http://localhost:8082/system-base
+  - name: token
+    value: ""
