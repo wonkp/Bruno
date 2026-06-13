@@ -1,0 +1,23 @@
+info:
+  name: 退费详情
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{sale-url}}/refund/detail"
+  body:
+    type: json
+    data: |-
+      {
+          "courseCategory": 1,
+          "parentId": 778935,
+          "isRepeat": false
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

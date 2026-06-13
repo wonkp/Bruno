@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{teaching-url}}/playback/agent?clazzId=1"
+  url: "{{teaching-url}}/playback/videoTranscription?clazzId=1"
   params:
     - name: clazzId
       value: "1"

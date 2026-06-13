@@ -1,0 +1,24 @@
+info:
+  name: 结算分页
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{sale-url}}/settlement/page"
+  body:
+    type: json
+    data: |-
+      {
+          "settlementStatus": 0,
+          "pageSize": 10,
+          "page": 1,
+        "inviteUserInviteAccount":15690976505
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
