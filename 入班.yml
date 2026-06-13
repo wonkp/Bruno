@@ -1,0 +1,33 @@
+info:
+  name: 入班
+  type: http
+  seq: 6
+
+http:
+  method: PUT
+  url: "{{teaching-url}}/groupStudent/enter"
+  headers:
+    - name: authorization
+      value: 5rXsM2uYUlPanXIZZQo0xAcC69H4Gcud5YgyYR3O
+  body:
+    type: json
+    data: |-
+      {
+        "studentId": 375174,
+        "courseId": 41,
+        "levelId": 107,
+        "timeRuleList": [
+          {
+            "lessonId": 7471,
+            "targetGroupId": 728122,
+            "targetGroupTimeRuleId": 347373
+          }
+        ],
+        "removeGroupTimeRuleIds": []
+      }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

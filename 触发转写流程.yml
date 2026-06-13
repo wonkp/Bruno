@@ -1,0 +1,19 @@
+info:
+  name: 触发转写流程
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{teaching-url}}/playback/agentAnalysis?clazzId=1"
+  params:
+    - name: clazzId
+      value: "1"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
