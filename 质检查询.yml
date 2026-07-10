@@ -1,11 +1,11 @@
 info:
-  name: 触发分析流程
+  name: 质检查询
   type: http
-  seq: 3
+  seq: 12
 
 http:
   method: GET
-  url: "{{teaching-url}}/playback/videoTranscription?clazzId=1"
+  url: "{{teaching-url}}/quality/id?clazzId=1"
   params:
     - name: clazzId
       value: "1"

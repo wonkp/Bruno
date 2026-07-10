@@ -1,0 +1,15 @@
+info:
+  name: 质检目标课堂
+  type: http
+  seq: 14
+
+http:
+  method: GET
+  url: "{{teaching-url}}/quality/clazz"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

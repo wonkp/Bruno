@@ -1,18 +1,17 @@
 info:
-  name: 退费详情
+  name: 质检
   type: http
-  seq: 4
+  seq: 11
 
 http:
   method: POST
-  url: "{{sale-url}}/refund/detail"
+  url: "{{teaching-url}}/quality"
   body:
     type: json
     data: |-
       {
-          "courseCategory": 1,
-          "parentId": 778935,
-          "isRepeat": false
+        "clazzId": 1,
+        "videoUrl": "http://recordcdn.talk-cloud.net/413a5c90-7ec3-449b-b8f3-0811efb433b5-68374893/record.mp4"
       }
   auth: inherit
 

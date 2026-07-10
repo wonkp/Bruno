@@ -23,12 +23,36 @@ request:
   scripts:
     - type: before-request
       code: |-
+        // 定义变量
+        let systemUrl = bru.getEnvVar('system-url');
+        // 默认用户名密码
+        let username = '8613752410338';
+        let password = '123456';
+        // 本地环境用户名密码
+        if (systemUrl.includes('localhost')) {
+          systemUrl = 'https://test-api.mathplore.com/system-base'
+          username = '8613752410338';
+          password = '123456';
+        }
+        // 测试环境用户名密码
+        if (systemUrl.includes('test')) {
+          username = '8613752410338';
+          password = '123456';
+        }
+        // 迁移环境用户名密码
+        if (systemUrl.includes('migrate')) {
+          username = '0';
+          password = '0';
+        }
+
+        const loginUrl = systemUrl + '/web/login';
+
         const response = await bru.sendRequest({
           method: 'POST',
-          url: 'https://test-api.mathplore.com/system-base/web/login',
+          url: loginUrl,
           data: {
-            "username": "gV7R6Gn3Inassp2+FX2HtaNLqIc+a/vfz76VhHQadj/fiIm4ZFXqmeBbzXgW+JLWsx7ONHpSeI51ZOEkAhGnvmnM/7pH1kqAc55ygofB08qyzx8dpw5j/tD44b3WLvPC/t4u8PTTAIMXfb52mxpf7JGGOqRfteOctHsDxJBcz+gpptPn6byI6h3nfFPLYLnQSqJgI9qSo9FXmj8/LNCvzqPV30pNHcX3PywMsKf0E+eTM1V/nufdxxQMIvyf9GGzx1eUjx5fWV5NllInQWF0Li0Fl1wxhAg2P0ju7FhuJJDLlSkBM4B8PIMYjpKTZX30JtIH1gl9z+//1TFtAicBWg==",
-            "password": "EJU6VR1lxVbXngWrt29Zs82MX6bBfw0cQ6RYWms9c+UXgILoOH5MByBI6riuqwabs9FVBjMdtg1QAHnIxwOzIotUgYQTY/5ztJ/jeQtLH0wQtQ+28I6JbbjikdZk/4pN4c4knhnvc4k2yQLFblF7ZSlhyZoP4XvaJXK28B6yc1p7nFW9A2p1YOoFN8XDhcs1+jc2Kvhc8FE+4WMh8OAKlEXDVyPhUpDPXdEGAim0TeOcfE9BzGmgc0khVdQkasc7SROMlp6VzQJ533DSr3EDaUoLoB588lPMfxi7jC/6GAthEeELb0qu7rTxC3uUMs5Qb4TnO6oLLaVwqZJfNrx5Vg==",
+            "username": username,
+            "password": password,
             "platform": "WEB",
             "type": 1,
             "forcedLogin": false,
@@ -37,6 +61,10 @@ request:
         }, function(err, res) {
           if (err) {
             console.error('Failed to get token:', err);
+            return;
+          }
+          if (res.data.code!=0) {
+            console.error('login fail');
             return;
           }
           bru.setVar('token', res.data.data.tokenValue);

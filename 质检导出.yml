@@ -1,18 +1,16 @@
 info:
-  name: 退费详情
+  name: 质检导出
   type: http
-  seq: 4
+  seq: 15
 
 http:
   method: POST
-  url: "{{sale-url}}/refund/detail"
+  url: "{{teaching-url}}/quality/export"
   body:
     type: json
     data: |-
       {
-          "courseCategory": 1,
-          "parentId": 778935,
-          "isRepeat": false
+        
       }
   auth: inherit
 

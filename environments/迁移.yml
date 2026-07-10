@@ -1,0 +1,10 @@
+name: 迁移
+variables:
+  - name: teaching-url
+    value: https://migrate-api.mathplore.com/teaching-web
+  - name: sale-url
+    value: https://migrate-api.mathplore.com/sale-web
+  - name: system-url
+    value: https://migrate-api.mathplore.com/system-base
+  - name: token
+    value: ""

@@ -1,0 +1,32 @@
+info:
+  name: dify工作流
+  type: http
+  seq: 10
+
+http:
+  method: POST
+  url: https://core-viptutor.mathplore.com/v1/workflows/run
+  headers:
+    - name: Authorization
+      value: Bearer app-79RiTUEisJElFEejRaX4zz8o
+  body:
+    type: json
+    data: |-
+      {
+        "inputs": {
+          "file": {
+            "transfer_method": "local_file",
+            "upload_file_id": "e3bfa858-a6c3-4a8f-b6dd-5d773e9d66ac",
+            "type": "image"
+          }
+        },
+        "response_mode": "blocking",
+        "user": "abc-123",
+        "trace_id": "dcbb9bb9-d55b-45ad-86dc-4bc81c3b9713"
+      }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

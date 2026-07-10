@@ -1,0 +1,43 @@
+info:
+  name: 课堂列表
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{teaching-url}}/clazz/page"
+  headers:
+    - name: Authorization
+      value: kFmJ6JehmQHJCGct3lAAVYRXe0Hpx6SPsav0gh4h
+  body:
+    type: json
+    data: |-
+      {
+        "page": 1,
+        "pageSize": 999,
+        "clazzStatus": 1,
+        "groupTimeLockFlag": 0,
+        "groupLockFlag": 0,
+        "courseCategory": 1,
+        "firstClazzStudentId": 380017,
+        "expandFilterMode": 1,
+        "excludeStudentId": 380017,
+        "groupAttributes": [
+          "1",
+          "4"
+        ],
+        "lockFlag": 0,
+        "startDateTime": 1782375000000,
+        "courseFilters": [
+          {
+            "courseAvailableId": 40
+          }
+        ],
+        "ccIds": []
+      }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

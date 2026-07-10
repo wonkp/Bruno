@@ -1,0 +1,25 @@
+info:
+  name: dify上传文件
+  type: http
+  seq: 9
+
+http:
+  method: POST
+  url: https://core-viptutor.mathplore.com/v1/files/upload
+  headers:
+    - name: Authorization
+      value: Bearer app-79RiTUEisJElFEejRaX4zz8o
+  body:
+    type: multipart-form
+    data:
+      - name: file
+        type: file
+        value:
+          - C:\Users\wonkp\Desktop\frame_08-14-36.jpg
+        contentType: multipart/form-data
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

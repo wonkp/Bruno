@@ -1,26 +1,31 @@
 info:
   name: 入班
   type: http
-  seq: 6
+  seq: 7
 
 http:
   method: PUT
-  url: "{{teaching-url}}/groupStudent/enter"
+  url: "{{teaching-url}}/groupStudent/enter/preview"
   headers:
     - name: authorization
-      value: 5rXsM2uYUlPanXIZZQo0xAcC69H4Gcud5YgyYR3O
+      value: cxAdt6IGy7GCxhd34CD3xNrtA1FeKicu2mZCiGIM
   body:
     type: json
     data: |-
       {
-        "studentId": 375174,
+        "studentId": 381227,
         "courseId": 41,
-        "levelId": 107,
+        "levelId": 105,
         "timeRuleList": [
           {
-            "lessonId": 7471,
-            "targetGroupId": 728122,
-            "targetGroupTimeRuleId": 347373
+            "lessonId": 7302,
+            "targetGroupId": 728145,
+            "targetGroupTimeRuleId": 347407
+          },
+          {
+            "lessonId": 7305,
+            "targetGroupId": 700994,
+            "targetGroupTimeRuleId": 319851
           }
         ],
         "removeGroupTimeRuleIds": []
