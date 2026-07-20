@@ -5,10 +5,10 @@ info:
 
 http:
   method: GET
-  url: "{{teaching-url}}/quality/id?clazzId=1"
+  url: "{{teaching-url}}/quality/id?clazzId=2646727"
   params:
     - name: clazzId
-      value: "1"
+      value: "2646727"
       type: query
   auth: inherit
 

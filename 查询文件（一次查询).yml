@@ -1,0 +1,23 @@
+info:
+  name: 查询文件（一次查询)
+  type: http
+  seq: 22
+
+http:
+  method: POST
+  url: "{{system-url}}/file/listRecursive"
+  body:
+    type: json
+    data: |
+      {
+        "parentId":null,
+        "isDir":null,
+        "keyword":null
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,21 @@
+info:
+  name: 删除文件
+  type: http
+  seq: 20
+
+http:
+  method: DELETE
+  url: "{{system-url}}/file"
+  body:
+    type: json
+    data: |
+      [
+          11
+        ]
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

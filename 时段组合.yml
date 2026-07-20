@@ -1,0 +1,33 @@
+info:
+  name: 时段组合
+  type: http
+  seq: 17
+
+http:
+  method: PUT
+  url: "{{teaching-url}}/groupStudent/enter"
+  body:
+    type: json
+    data: |-
+      {
+        "studentId": 371491,
+        "courseId": 40,
+        "levelId": 103,
+        "timeRuleList": [
+          {
+            "lessonId": 7052,
+            "targetGroupId": 2018,
+            "targetGroupTimeRuleId": 2282
+          }
+        ],
+        "removeGroupTimeRuleIds": [
+          2281
+        ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
