@@ -1,18 +1,18 @@
 info:
-  name: 评测分页
+  name: 退费详情
   type: http
-  seq: 14
+  seq: 4
 
 http:
   method: POST
-  url: "{{teaching-url}}/studentWorkbookRel/page"
+  url: "{{sale-url}}/refund/detail"
   body:
     type: json
     data: |-
       {
-        "pageSize": 10,
-        "page": 1,
-        "type": ""
+          "courseCategory": 1,
+          "parentId": 781532,
+          "isRepeat": false
       }
   auth: inherit
 

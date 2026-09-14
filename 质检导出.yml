@@ -1,7 +1,7 @@
 info:
   name: 质检导出
   type: http
-  seq: 15
+  seq: 13
 
 http:
   method: POST

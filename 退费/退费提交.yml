@@ -1,0 +1,203 @@
+info:
+  name: 退费提交
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{sale-url}}/refund/submit"
+  body:
+    type: json
+    data: |-
+      {
+        "accountInfo": {
+          "parentId": 781514,
+          "parentAccount": "86-13488802221",
+          "ccId": 251938,
+          "ccName": "测试员工",
+          "lpName": null,
+          "lpId": null,
+          "studentInfoList": [
+            {
+              "studentName": "测试数据0721-11-学员01",
+              "studentId": 374171,
+              "currentOrderNum": 4
+            },
+            {
+              "studentName": "测试数据0721-11-学员03",
+              "studentId": 374175,
+              "currentOrderNum": 3
+            },
+            {
+              "studentName": "测试数据0721-11-学员02",
+              "studentId": 374174,
+              "currentOrderNum": 2
+            }
+          ],
+          "introductionType": 0,
+          "introductionInviteId": null,
+          "introductionInviteAccount": null,
+          "invitationCode": null,
+          "introduction": false,
+          "hasWithdrawApp": false,
+          "hasSettlingComm": false
+        },
+        "orderInfo": [
+          {
+            "refundId": null,
+            "orderId": 216075,
+            "orderNo": "PO2026072116363246274137",
+            "refundNo": null,
+            "refundStatus": null,
+            "refundFailReason": null,
+            "refundNeedAmount": 26817,
+            "refundFee": 0,
+            "refundActualAmount": 26817,
+            "giftGoodsIds": "[]",
+            "giftConversionAmount": 0,
+            "assetOrderGiftList": null,
+            "parentId": 781514,
+            "studentId": 374171,
+            "ccId": 3,
+            "lpId": 0,
+            "channelCode": "wqd-mathplore",
+            "channelName": "无渠道",
+            "orderType": 1,
+            "actualRmbAmount": "26817.00",
+            "usedRmbAmount": "0.00",
+            "payTime": 1784622999000,
+            "assetList": [
+              {
+                "refundId": null,
+                "orderId": 216075,
+                "assetId": 5287,
+                "parentAssetId": 0,
+                "studentId": 374171,
+                "studentName": "测试数据0721-11-学员01",
+                "parentId": 781514,
+                "courseId": 40,
+                "courseName": "MATHPLORE趣味数学低阶（中）",
+                "courseDuration": 40,
+                "subjectType": 1,
+                "consumedHours": "0.00",
+                "remainingHours": "284.00",
+                "frozenHours": "0.00",
+                "unlockedHours": "0.00",
+                "historyRefundHours": "0.00",
+                "refundHours": 284,
+                "assetType": 1,
+                "unitPrice": "94.4261",
+                "businessType": 1,
+                "businessUnitId": 216075,
+                "consumedTime": 1784622998000,
+                "isOrder": true
+              }
+            ],
+            "isRefundAll": true
+          }
+        ],
+        "refundInfo": {
+          "refundId": null,
+          "courseCategory": 1,
+          "workFlowId": null,
+          "refundType": 2,
+          "applicantId": null,
+          "applicantName": null,
+          "applyTime": null,
+          "approvalTime": null,
+          "totalPayCourseCnt": "0.00",
+          "totalFreeCourseCnt": "0.00",
+          "totalNeedAmount": 26817,
+          "totalActualAmount": 26817,
+          "totalFee": 0,
+          "brokerageReduce": 0,
+          "brokerageBalance": 0,
+          "brokeragePointReduce": 0,
+          "brokeragePointBalance": 0,
+          "classPointReduce": 0,
+          "classPointBalance": 0,
+          "taskNum": null,
+          "taskInfo": [
+            {
+              "courseDuration": 40,
+              "courseDurationLabel": "40min",
+              "deductNum": 0,
+              "remainNum": 232
+            }
+          ],
+          "leaveReduce": 0,
+          "leaveBalance": 2,
+          "quitSchoolReduce": 0,
+          "quitSchoolBalance": 2,
+          "refundReason": [
+            "排课时间不合适",
+            "学生年龄小",
+            "其他",
+            "学生没时间"
+          ],
+          "refundReasonSub": {
+            "weekdayHours": [
+              {
+               "weekday": 1,
+                "hourTime":"02:00"
+              },
+               {
+               "weekday": 2,
+                "hourTime":"02:00"
+              },
+               {
+               "weekday": 3,
+                "hourTime":"02:00"
+              }
+            ],
+            "age": 3,
+            "remark": "巴拉巴拉"
+          },
+          "refundRemark": "111",
+          "refundWay": 2,
+          "refundWayLabel": null,
+          "refundPicUrl": "[\"https://test-oss-viptutor.mathplore.com/xueyu/orderManagement/refund/2026/08/08/images.jpg\"]",
+          "accountName": "11",
+          "bankName": "11",
+          "bankCardNumber": "11",
+          "bankBranch": "11",
+          "refundTime": null,
+          "refundStatus": null,
+          "manualPayStatus": null,
+          "manualPayStatusLabel": null,
+          "approvalStatus": null,
+          "orderNoInfo": "111",
+          "cancelTime": null,
+          "payPicture": null,
+          "createTime": null,
+          "updateTime": null,
+          "createBy": null,
+          "updateBy": null,
+          "createUserId": null,
+          "updateUserId": null,
+          "deleted": null,
+          "originalRefundType": 2,
+          "refundPicUrls": [
+            {
+              "name": "images.jpg",
+              "percentage": 0,
+              "status": "ready",
+              "size": 14475,
+              "raw": {
+                "uid": 1786175095899
+              },
+              "uid": 1786175095899,
+              "url": "blob:http://localhost:8084/039fd606-c16c-450b-84a6-8fbe99a6fc1a"
+            }
+          ],
+          "payPicUrls": []
+        },
+        "isRepeat": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

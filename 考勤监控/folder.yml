@@ -1,0 +1,7 @@
+info:
+  name: 考勤监控
+  type: folder
+  seq: 20
+
+request:
+  auth: inherit

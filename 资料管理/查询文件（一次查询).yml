@@ -1,18 +1,16 @@
 info:
-  name: 查询文件（懒加载）
+  name: 查询文件（一次查询)
   type: http
-  seq: 21
+  seq: 16
 
 http:
   method: POST
-  url: "{{system-url}}/file/list"
+  url: "{{system-url}}/file/dir/tree/permission"
   body:
     type: json
     data: |
       {
-        "parentId":null,
-        "isDir":null,
-        "keyword":null
+        "parentId":null
       }
   auth: inherit
 

@@ -1,0 +1,22 @@
+info:
+  name: 上传凭证
+  type: http
+  seq: 25
+
+http:
+  method: POST
+  url: "{{sale-url}}/refund/pay/success/screenshot"
+  body:
+    type: json
+    data: |-
+      {
+        "refundId": 465,
+        "screenshot": "[\"https://test-oss-viptutor.mathplore.com/xueyu/orderManagement/refund/proof/2026/08/07/截屏2026-07-0917.17.56.png\",\"https://test-oss-viptutor.mathplore.com/xueyu/orderManagement/refund/proof/2026/08/07/截屏2026-07-1710.19.04.png\"]"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

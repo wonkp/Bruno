@@ -1,14 +1,14 @@
 info:
-  name: 质检查询
+  name: 根据角色查询文件夹权限
   type: http
-  seq: 10
+  seq: 16
 
 http:
   method: GET
-  url: "{{teaching-url}}/quality/id?clazzId=2646727"
+  url: "{{system-url}}/file/queryFileIdsByRoleId?roleId=100"
   params:
-    - name: clazzId
-      value: "2646727"
+    - name: roleId
+      value: "100"
       type: query
   auth: inherit
 

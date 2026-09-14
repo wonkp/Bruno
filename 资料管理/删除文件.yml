@@ -1,7 +1,7 @@
 info:
   name: 删除文件
   type: http
-  seq: 20
+  seq: 16
 
 http:
   method: DELETE
@@ -10,7 +10,7 @@ http:
     type: json
     data: |
       [
-          11
+          70
         ]
   auth: inherit
 

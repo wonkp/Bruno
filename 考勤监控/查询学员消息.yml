@@ -1,0 +1,26 @@
+info:
+  name: 查询学员消息
+  type: http
+  seq: 19
+
+http:
+  method: GET
+  url: "{{system-url}}/message/send/student/msg?clazzId=278732&studentId=374263&tutorUserId=251980"
+  params:
+    - name: clazzId
+      value: "278732"
+      type: query
+    - name: studentId
+      value: "374263"
+      type: query
+    - name: tutorUserId
+      value: "251980"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

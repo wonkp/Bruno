@@ -1,0 +1,22 @@
+info:
+  name: 创建文件夹 (1)
+  type: http
+  seq: 16
+
+http:
+  method: POST
+  url: "{{system-url}}/file/directory/name?id=&folderName="
+  params:
+    - name: id
+      value: ""
+      type: query
+    - name: folderName
+      value: ""
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

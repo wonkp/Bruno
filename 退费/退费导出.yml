@@ -1,18 +1,17 @@
 info:
-  name: 查询文件（一次查询)
+  name: 退费导出
   type: http
-  seq: 22
+  seq: 25
 
 http:
   method: POST
-  url: "{{system-url}}/file/listRecursive"
+  url: "{{sale-url}}/refund/export"
   body:
     type: json
-    data: |
+    data: |-
       {
-        "parentId":null,
-        "isDir":null,
-        "keyword":null
+          "channelCodes": [],
+          "refundId": 805
       }
   auth: inherit
 

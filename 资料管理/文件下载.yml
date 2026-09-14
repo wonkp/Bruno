@@ -1,14 +1,14 @@
 info:
-  name: 质检查询
+  name: 文件下载
   type: http
-  seq: 10
+  seq: 16
 
 http:
   method: GET
-  url: "{{teaching-url}}/quality/id?clazzId=2646727"
+  url: "{{teaching-url}}/courseMaterial/download?id=17738"
   params:
-    - name: clazzId
-      value: "2646727"
+    - name: id
+      value: "17738"
       type: query
   auth: inherit
 

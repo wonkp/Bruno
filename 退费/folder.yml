@@ -1,0 +1,7 @@
+info:
+  name: 退费
+  type: folder
+  seq: 16
+
+request:
+  auth: inherit

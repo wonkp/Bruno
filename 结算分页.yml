@@ -1,7 +1,7 @@
 info:
   name: 结算分页
   type: http
-  seq: 6
+  seq: 5
 
 http:
   method: POST

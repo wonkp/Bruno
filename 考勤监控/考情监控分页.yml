@@ -1,0 +1,27 @@
+info:
+  name: 考情监控分页
+  type: http
+  seq: 18
+
+http:
+  method: POST
+  url: "{{teaching-url}}/attendance/clazz/page"
+  body:
+    type: json
+    data: |-
+      {
+        "clazzStatus": 3,
+        "studentClazzStatus": 1,
+        "pageSize": 100,
+        "page": 1,
+        "startTimeFrom": 1788710400000,
+        "startTimeTo": 1788796799000
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

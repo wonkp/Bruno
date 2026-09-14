@@ -1,0 +1,32 @@
+info:
+  name: 企业群发
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: https://qyapi.weixin.qq.com/cgi-bin/externalcontact/add_msg_template?access_token=XSIS-SrNFoNBDf8cEyzB-ZFURw6cvI9oYMRzv7yc4DU5_Pv4KTAa1G9jUIHkX1eWg2dLvMAn3WgwkfkU9IJJB8i_I_x0An5roZ_cUlkbNgA30nD_KpZUaBmRWbanOevuI2_uUV5D9-ZRr0pgoLEkP0u3G9wT9mN7V6i043A7SNjCNNMr27KM8XXqivdbhi4Fs9Lpw0dqzRbAm8w6s-o0CQ
+  params:
+    - name: access_token
+      value: XSIS-SrNFoNBDf8cEyzB-ZFURw6cvI9oYMRzv7yc4DU5_Pv4KTAa1G9jUIHkX1eWg2dLvMAn3WgwkfkU9IJJB8i_I_x0An5roZ_cUlkbNgA30nD_KpZUaBmRWbanOevuI2_uUV5D9-ZRr0pgoLEkP0u3G9wT9mN7V6i043A7SNjCNNMr27KM8XXqivdbhi4Fs9Lpw0dqzRbAm8w6s-o0CQ
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+        "chat_type": "single",
+        "external_userid": [
+          "wmMxG2CAAAo58OYboCqd1hF478_YmFNA"
+        ],
+        "sender": "13752410338",
+        "text": {
+          "content": "测试消息"
+        }
+      }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

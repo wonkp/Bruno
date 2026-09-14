@@ -1,7 +1,7 @@
 info:
   name: 时段组合
   type: http
-  seq: 17
+  seq: 15
 
 http:
   method: PUT

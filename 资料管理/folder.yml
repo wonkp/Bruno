@@ -1,0 +1,7 @@
+info:
+  name: 资料管理
+  type: folder
+  seq: 17
+
+request:
+  auth: inherit

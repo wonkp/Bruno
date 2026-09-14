@@ -1,18 +1,17 @@
 info:
-  name: 评测分页
+  name: 退费分页
   type: http
-  seq: 14
+  seq: 24
 
 http:
   method: POST
-  url: "{{teaching-url}}/studentWorkbookRel/page"
+  url: "{{sale-url}}/refund/page"
   body:
     type: json
     data: |-
       {
-        "pageSize": 10,
-        "page": 1,
-        "type": ""
+          "accountMonths": ["2024-06"]
+          "ccIds":[14,15,16]
       }
   auth: inherit
 

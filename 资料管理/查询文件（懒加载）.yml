@@ -1,18 +1,18 @@
 info:
-  name: 退费详情
+  name: 查询文件（懒加载）
   type: http
-  seq: 4
+  seq: 16
 
 http:
   method: POST
-  url: "{{sale-url}}/refund/detail"
+  url: "{{system-url}}/file/dir/tree/permission"
   body:
     type: json
-    data: |-
+    data: |
       {
-          "courseCategory": 1,
-          "parentId": 778935,
-          "isRepeat": false
+        "parentId":null,
+        "isDir":1,
+        "keyword":null
       }
   auth: inherit
 
