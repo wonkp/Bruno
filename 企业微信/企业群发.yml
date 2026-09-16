@@ -16,9 +16,10 @@ http:
       {
         "chat_type": "single",
         "external_userid": [
-          "wmMxG2CAAAo58OYboCqd1hF478_YmFNA"
+          "wmMxG2CAAAJLux17vQOpIKctZpso5NMg",
+          "wmMxG2CAAALAJsA0SeCnsLTcNKHkGVeA"
         ],
-        "sender": "13752410338",
+        
         "text": {
           "content": "测试消息"
         }
