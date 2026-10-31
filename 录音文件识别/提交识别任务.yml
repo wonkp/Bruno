@@ -1,0 +1,22 @@
+info:
+  name: 提交识别任务
+  type: http
+  seq: 28
+
+http:
+  method: POST
+  url: "{{system-url}}/rpc/nls/submit"
+  body:
+    type: json
+    data: |-
+      {
+        "url": "https://test-viptutor-mp4.pptutor.com/eyJ6b25lIjoiejIiLCJxdWV1ZSI6InBlcnNpc3RlbnQ6Ly9rb2RvL3Npc3lwaHVzL2ZldGNoIiwicGFydF9pZCI6LTEsIm9mZnNldCI6LTEsIm1pZCI6IjM2NDQ3NjY6MTgzMTU6MTQifQ==.mp4?e=1792817492&token=IAM-OuBDo2GlUTgXr-rHmHSPzjKokaeoxkwNgsJsZldU:bUWdwos_2pQvIARqfNgi8TnYTVs="
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

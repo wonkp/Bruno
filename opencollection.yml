@@ -41,8 +41,8 @@ request:
         }
         // 迁移环境用户名密码
         if (systemUrl.includes('migrate')) {
-          username = '0';
-          password = '0';
+          username = '8618108095913';
+          password = 'ARASHI01241126';
         }
 
         const loginUrl = systemUrl + '/web/login';

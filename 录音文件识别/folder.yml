@@ -1,0 +1,7 @@
+info:
+  name: 录音文件识别
+  type: folder
+  seq: 25
+
+request:
+  auth: inherit

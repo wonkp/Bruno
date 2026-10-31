@@ -1,0 +1,25 @@
+info:
+  name: 额度分页
+  type: http
+  seq: 24
+
+http:
+  method: POST
+  url: "{{teaching-url}}/limit/page"
+  body:
+    type: json
+    data: |-
+      {
+        "typeCode": 1,
+        "parentId": 1,
+        "pageSize": 10,
+        "page": 1
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

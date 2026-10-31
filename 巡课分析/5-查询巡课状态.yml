@@ -1,0 +1,49 @@
+info:
+  name: 查询巡课状态
+  type: http
+  seq: 31
+
+http:
+  method: GET
+  url: "{{teaching-url}}/playback/inspection/:clazzId/status"
+  params:
+    - name: clazzId
+      value: "1"
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: |-
+  ## 查询巡课状态
+
+  返回本服务自己的状态枚举 + Coze 的 `chatId` / `conversationId`（便于去 Coze 控制台核对）。
+  **不透出 Coze 原始状态**（in_progress / requires_action 等），契约由我们掌握。
+
+  ### 字段说明
+
+  | 字段 | 说明 |
+  |---|---|
+  | `status` | 0 未分析 / 1 成功 / 2 处理中 / 3 失败 |
+  | `statusName` | 状态中文名 |
+  | `chatId` | Coze Chat ID，与 conversationId 一起用于控制台查对话 |
+  | `conversationId` | Coze 会话 ID |
+  | `failReason` | 失败原因/备注，见下表 |
+  | `reportTime` | 报告生成时间 |
+  | `segmentCount` | 生成报告时参与拼接的录制段数 |
+
+  ### failReason 前缀
+
+  | 前缀 | 含义 |
+  |---|---|
+  | `blocked:` | 准入不满足（某段转写失败），**从未调用 Coze**。需人工补转写后重新触发 |
+  | `coze_` | Coze 调用链路失败（`coze_submit:*` / `coze_poll_timeout` / `coze_chat_failed` 等） |
+  | `coze_empty_answer` | **状态仍为 1（成功）**，只是没有正文——属正常情况，仅留痕 |
+  | `manual_force_regenerate` | force 重做前的标记 |
+
+  > `blocked` 不会自动恢复：转写修好后需要重新调「触发巡课分析」。

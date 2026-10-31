@@ -8,3 +8,15 @@ variables:
     value: https://test-api.mathplore.com/system-base
   - name: token
     value: ""
+  # ---------- Coze 巡课分析 ----------
+  - name: coze-url
+    value: https://api.coze.cn
+  - name: coze-bot-id
+    value: "7691622261690138667"
+  - name: coze-token
+    value: sat_d7SBS8YB6g2Ub4aucEM0LMHtbVLuUTe1QVa7VOfN6mr7uzT61NOpu8kWezhMfujl
+  # 以下两个由「发起对话」自动写入，无需手工维护
+  - name: coze-chat-id
+    value: ""
+  - name: coze-conversation-id
+    value: ""

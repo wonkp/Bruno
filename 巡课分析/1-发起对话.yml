@@ -1,0 +1,80 @@
+info:
+  name: 发起对话v3
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{coze-url}}/v3/chat"
+  auth: none
+  headers:
+    - name: Authorization
+      value: Bearer {{coze-token}}
+    - name: Content-Type
+      value: application/json; charset=utf-8
+  body:
+    type: json
+    data: |-
+      {
+        "bot_id": "{{coze-bot-id}}",
+        "user_id": "bruno_test",
+        "stream": false,
+        "auto_save_history": true,
+        "parameters": {
+          "USER_INPUT": "00:00:02 可以请宝贝到屏幕面前来，我们开始上课。00:00:10 今天学习加法。00:00:20 请看第一题。",
+          "clazzId": "7170509"
+        },
+        "additional_messages": [
+          {
+            "role": "user",
+            "content": "请生成本节课巡课报告",
+            "content_type": "text"
+          }
+        ]
+      }
+  scripts:
+    - type: after-response
+      code: |-
+        const body = res.getBody();
+        if (body && body.code === 0 && body.data) {
+          bru.setEnvVar('coze-chat-id', String(body.data.id));
+          bru.setEnvVar('coze-conversation-id', String(body.data.conversation_id));
+          console.log('已保存 chat_id=' + body.data.id + ' conversation_id=' + body.data.conversation_id);
+          console.log('下一步：稍等 3~10 秒，再执行「2-查询对话详情」');
+        } else {
+          console.error('发起失败：' + JSON.stringify(body));
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false
+
+docs: |-
+  ## 发起对话（Coze v3）
+
+  **返回的 `data.id` 是 chat_id，`data.conversation_id` 是会话 ID。**
+  本请求已配置后置脚本，会自动写入环境变量 `coze-chat-id` / `coze-conversation-id`，
+  后续两个请求直接执行即可。
+
+  ### 关键参数
+
+  | 参数 | 说明 |
+  |---|---|
+  | `stream` | 必须 `false`。后端批处理用非流式 + 轮询 |
+  | `auto_save_history` | 非流式下**必须** `true`，否则查不到状态和回复 |
+  | `parameters.USER_INPUT` | 逐字稿正文（已实测确认参数名） |
+  | `parameters.clazzId` | 课堂 ID，工作流依赖它取课件等级等信息 |
+  | `additional_messages` | 不可省略；无 conversation_id 时必须传用户问题 |
+
+  ### 实测坑
+
+  1. **`Content-Type` 必须是 `application/json; charset=utf-8`**。
+     用纯 `application/json` 且 body 含中文时，接口返回 `code:5000 Internal server error`。
+  2. **`parameters` 里传不存在的键不会报错**。传 `{"FOO":"bar"}` 同样返回 code=0，
+     工作流只是拿不到值。所以参数名写错无法从接口层发现。
+  3. **接口 code=0 不代表业务成功**。工作流入参缺失/解析失败时会返回兜底文案
+     （实测：「本节未生成报告：课件等级缺失或逐字稿解析失败，请人工复核后重跑。」），
+     这条文案会作为正常 answer 返回，必须由业务侧识别。

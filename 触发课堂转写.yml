@@ -1,0 +1,22 @@
+info:
+  name: 触发课堂转写
+  type: http
+  seq: 26
+
+http:
+  method: POST
+  url: "{{teaching-url}}/playback/transcription/submit"
+  body:
+    type: json
+    data: |-
+      {
+        "clazzId": 1
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true

@@ -1,0 +1,49 @@
+info:
+  name: 查询巡课报告
+  type: http
+  seq: 32
+
+http:
+  method: GET
+  url: "{{teaching-url}}/playback/inspection/:clazzId/result"
+  params:
+    - name: clazzId
+      value: "1"
+      type: path
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: |-
+  ## 查询巡课报告
+
+  **未完成时也返回 200**，只是正文为空 + 状态字段——"报告还没生成"和"生成失败"
+  是两回事，用错误码会让调用方混淆。
+
+  ### 返回字段
+
+  | 字段 | 说明 |
+  |---|---|
+  | `status` | 0 未分析 / 1 成功 / 2 处理中 / 3 失败 |
+  | `videoAgentCc` | 报告正文，未完成时为空 |
+  | `reportTime` | 生成时间 |
+
+  ### 重要：正文非空不代表是有效报告
+
+  实测发现，工作流在**入参缺失或解析失败**时会返回一条兜底提示文案作为正常 answer，例如：
+
+  ```
+  【巡课智能体】本节未生成报告：课件等级缺失或逐字稿解析失败，请人工复核后重跑。
+  ```
+
+  后端按决策**原样落库、不做识别**。因此 `status=1` 且正文非空，
+  仍可能是这类提示语。消费方需要自己读正文判断。
+
+  ### 未查询到记录
+
+  该课堂从未触发过巡课时，返回 `{ "clazzId": 7170509 }`，`status` 为 null。

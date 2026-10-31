@@ -1,0 +1,58 @@
+info:
+  name: 触发巡课分析
+  type: http
+  seq: 30
+
+http:
+  method: POST
+  url: "{{teaching-url}}/playback/inspection/:clazzId"
+  params:
+    - name: clazzId
+      value: "1"
+      type: path
+  body:
+    type: json
+    data: |-
+      {
+        "clazzId": 7170509,
+        "force": false
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: |-
+  ## 触发巡课分析（异步受理）
+
+  不同步等待结果，立即返回"已受理"+ 当前状态。执行三个请求后，
+  用「查询巡课状态」轮询进度。
+
+  ### 入参
+
+  | 参数 | 位置 | 说明 |
+  |---|---|---|
+  | `clazzId` | **path** | 课堂 Id，URL 上的值才生效 |
+  | `clazzId` | body | DTO 里有但**不被读取**，只为全量字段保留；改这里无效 |
+  | `force` | body | `true` 表示已完成也重新生成 |
+
+  > **`force=true` 会重新计费并覆盖旧报告**，生产环境谨慎使用。
+
+  ### 返回状态
+
+  | status | 含义 | 后续动作 |
+  |---|---|---|
+  | `0` | 未分析（已受理，等扫描任务推进） | 继续轮询 |
+  | `1` | 成功 | 调「查询巡课报告」取正文 |
+  | `2` | 处理中 | 继续轮询 |
+  | `3` | 失败 | 看 `failReason` |
+
+  ### 可能直接报错
+
+  - `5410 系统繁忙，请稍后再试` —— 并发闸满（上限 3），**未落记录、未改状态**，稍后重试即可
+  - `5401 当前课堂暂无有效的MP4课程文件` —— 该堂没有 MP4 录制段
+  - `5400 该课堂没有课堂回放` —— 该堂无任何回放记录

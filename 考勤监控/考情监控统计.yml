@@ -4,11 +4,22 @@ info:
   seq: 19
 
 http:
-  method: GET
+  method: POST
   url: "{{teaching-url}}/attendance/clazz/stat"
   headers:
     - name: Authorization
       value: FVSg3iC73fJq9UP06dEG8vzcqAH2hlHCU9EH4s5R
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "clazzStatus": 1,
+        "startTimeFrom": "2026-10-01T00:00:00",
+        "startTimeTo": "2026-10-22T00:00:00"
+      }
+  auth: inherit
 
 settings:
   encodeUrl: true

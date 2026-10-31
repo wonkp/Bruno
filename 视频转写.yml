@@ -1,0 +1,20 @@
+info:
+  name: 视频转写
+  type: http
+  seq: 20
+
+http:
+  method: GET
+  url: "{{system-url}}/nls/task?url=https://test-viptutor-mp4.pptutor.com/1065215553397411789721076dhsuuila.mp4?e=1790580770&token=IAM-OuBDo2GlUTgXr-rHmHSPzjKokaeoxkwNgsJsZldU:icpLhEiHvJDBJ7e0Q3r98nVm2kg="
+  params:
+    - name: url
+      value: https://test-viptutor-mp4.pptutor.com/1065215553397411789721076dhsuuila.mp4?e=1790580770&token=IAM-OuBDo2GlUTgXr-rHmHSPzjKokaeoxkwNgsJsZldU:icpLhEiHvJDBJ7e0Q3r98nVm2kg=
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

@@ -1,0 +1,7 @@
+info:
+  name: 巡课分析
+  type: folder
+  seq: 33
+
+request:
+  auth: inherit
